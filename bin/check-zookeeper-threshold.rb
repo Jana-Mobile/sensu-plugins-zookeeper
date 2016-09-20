@@ -90,7 +90,7 @@ class ZookeeperThreshold < Sensu::Plugin::Check::CLI
     if response =~ /^#{config[:metric]}\s+(\d+)$/
       value = Regexp.last_match(1)
     else
-      unknown "#{config[:metric]} not found"
+      unknown "#{config[:metric]} not found.  If the metric is only present on leaders, run with --leader_only"
     end
 
     if config[:mincrit] != nil
