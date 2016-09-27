@@ -82,7 +82,7 @@ class ZookeeperThreshold < Sensu::Plugin::Check::CLI
 
     if config[:leader_only]
       response = zkcmd(:srvr)
-      ok "Check run on a follower, but run as leader_only" if response =~ /^Mode: follower$/
+      ok "Check run on a follower, but run as leader_only" if response !~ /^Mode: leader$/
     end
 
     response = zkcmd(config[:zk_command])
